@@ -1,0 +1,114 @@
+/* Sameer's Buy Buddy — comic-inspired clean UI */
+:root {
+  --bg: #0f1020;
+  --bg-2: #181a33;
+  --card: #1f2147;
+  --ink: #f4f4ff;
+  --muted: #9aa0c7;
+  --accent: #ffd23f;
+  --accent-2: #ff5d8f;
+  --good: #5ef38c;
+  --shadow: 6px 6px 0 #000;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Comic Sans MS', 'Comic Neue', system-ui, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #2a2d6b 0%, transparent 60%),
+    radial-gradient(800px 500px at 110% 10%, #3a1247 0%, transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+
+.hero { text-align: center; margin-bottom: 32px; }
+.comic-title {
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  margin: 0;
+  letter-spacing: 1px;
+  color: var(--accent);
+  text-shadow:
+    3px 3px 0 var(--accent-2),
+    6px 6px 0 #000;
+  transform: rotate(-1deg);
+}
+.tagline { color: var(--muted); margin-top: 12px; }
+
+.search {
+  display: flex; gap: 10px; justify-content: center;
+  margin: 24px auto 28px; max-width: 640px;
+}
+.search input {
+  flex: 1; padding: 14px 18px;
+  border: 3px solid #000; border-radius: 999px;
+  background: #fff; color: #111; font-size: 1rem;
+  box-shadow: var(--shadow); outline: none;
+  transition: transform .15s ease;
+}
+.search input:focus { transform: translateY(-2px); }
+.search button {
+  padding: 14px 22px; border: 3px solid #000; border-radius: 999px;
+  background: var(--accent); color: #111; font-weight: 700;
+  cursor: pointer; box-shadow: var(--shadow);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.search button:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 #000; }
+.search button:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+
+.status { text-align: center; color: var(--muted); }
+
+.results h2, .panel h2 { margin: 0 0 14px; }
+
+.cards {
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.card {
+  background: var(--card);
+  border: 3px solid #000;
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease;
+  display: flex; flex-direction: column; gap: 8px;
+  animation: pop .25s ease both;
+}
+.card:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 #000; }
+.card .src { color: var(--accent); font-weight: 700; letter-spacing: .3px; }
+.card .title { font-size: .95rem; color: var(--ink); min-height: 2.6em; }
+.card .price { font-size: 1.4rem; color: var(--good); font-weight: 700; }
+.card .price.na { color: var(--accent-2); font-size: 1rem; }
+.card a {
+  margin-top: auto; align-self: flex-start;
+  background: var(--accent-2); color: #111; text-decoration: none;
+  padding: 8px 12px; border: 3px solid #000; border-radius: 999px;
+  font-weight: 700; font-size: .85rem;
+}
+
+.panel {
+  margin-top: 28px;
+  background: var(--bg-2);
+  border: 3px solid #000; border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow);
+}
+.reco p {
+  background: var(--card); padding: 14px 16px; border-radius: 12px;
+  border: 2px dashed var(--accent); margin: 0; font-size: 1.1rem;
+}
+
+.footer { text-align: center; color: var(--muted); margin-top: 40px; font-size: .9rem; }
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 520px) {
+  .search { flex-direction: column; }
+  .search button { width: 100%; }
+}

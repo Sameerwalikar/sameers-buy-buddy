@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sameer's Buy Buddy — Gaming Laptop Price Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <!-- Local Chart.js (UMD) -->
+  <script defer src="{{ url_for('static', filename='chart.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1 class="comic-title">Sameer's Buy Buddy</h1>
+      <p class="tagline">Track gaming laptop prices across Indian stores 🎮💻</p>
+    </header>
+
+    <section class="search">
+      <input id="query" type="text" placeholder="Search gaming laptop..." autocomplete="off" />
+      <button id="searchBtn" type="button">Search</button>
+    </section>
+
+    <p id="status" class="status" hidden></p>
+
+    <!-- Hidden until first search -->
+    <section id="results" class="results" hidden>
+      <h2>Live Prices</h2>
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section id="historySection" class="panel" hidden>
+      <h2>Price History</h2>
+      <canvas id="historyChart" height="120"></canvas>
+    </section>
+
+    <section id="recoSection" class="panel reco" hidden>
+      <h2>Best Time to Buy</h2>
+      <p id="recoText"></p>
+    </section>
+
+    <footer class="footer">Built with Flask + Playwright • Sameer's Buy Buddy</footer>
+  </main>
+</body>
+</html>
